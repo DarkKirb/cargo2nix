@@ -27,6 +27,7 @@
   hostPlatformCpu ? null,
   hostPlatformFeatures ? [],
   NIX_DEBUG ? 0,
+  extraCargoFlags ? "--lib"
 }:
 with builtins; with lib;
 let
@@ -81,7 +82,7 @@ let
     in
       if compileMode != "doctest" then ''
         ${rustToolchain}/bin/cargo build $CARGO_VERBOSE ${optionalString release "--release"} --target ${rustHostTriple} ${buildMode} \
-          ${featuresArg} ${optionalString (!hasDefaultFeature) "--no-default-features"} \
+          ${featuresArg} ${optionalString (!hasDefaultFeature) "--no-default-features"} ${extraCargoFlags} \
           --message-format=json | tee .cargo-build-output
       ''
       # Note: Doctest doesn't yet support no-run https://github.com/rust-lang/rust/pull/83857
