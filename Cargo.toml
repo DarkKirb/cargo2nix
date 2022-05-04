@@ -5,13 +5,13 @@ edition = "2021"
 license = "MIT"
 
 [dependencies]
-cargo = "0.57.0"
+cargo = "0.61.1"
 cargo-platform = "0.1.2"
 colorify = "0.2.3"
-anyhow = "1.0.28"
-pathdiff = "0.2.0"
-semver = "0.9.0"
-serde = { version = "1.0.104", features = ["derive"] }
+anyhow = "1.0.57"
+pathdiff = "0.2.1"
+semver = "1.0.9"
+serde = { version = "1.0.137", features = ["derive"] }
 tempfile = "3.1.0"
 tera = { version = "1.0.2", default-features = false }
-toml = "0.5.6"
+toml = "0.5.9"
