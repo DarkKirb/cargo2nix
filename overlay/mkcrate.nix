@@ -168,7 +168,7 @@ with lib; let
     ''
       mkdir -p $out
       for i in $(cat $pathsPath); do
-        ${pkgs.xorg.lndir}/bin/lndir -silent $i $out
+        ${pkgs.pkgsHostHost.xorg.lndir}/bin/lndir -silent $i $out
       done
       ${postBuild}
     '';
