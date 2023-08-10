@@ -338,8 +338,10 @@ with lib; let
               , test: .test
               , example: .example
               , bench: (if \"$registry\" == \"unknown\" then .bench else null end)
+              , features: .features
               } | with_entries(select( .value != null ))
-              + $manifestPatch" \
+              * $manifestPatch" \
+        | jq "del(.features[]?[]?)" \
         | jq "del(.[][] | nulls)" \
         | remarshal -if json -of toml > Cargo.toml
     '';
